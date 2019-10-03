@@ -1,4 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
+import "./styles.css";
+import { tsPropertySignature } from '@babel/types';
 
 //import TodoForm from "./components/TodoComponents/TodoForm"; 
 //import TodoList from "./components/TodoComponents/TodoList"; 
@@ -52,8 +54,29 @@ return (
 <div>
   <h2>Todo List: MVP</h2>
   <div>
+    
+
     {tasks.map(t => 
-      <p key={t}>{t}</p>
+
+      <p className = {`${t.completed ? "completed" :""}`}
+      key={t.id} onClick={() => setTasks(tasks.map(item => {
+               if (item.id === t.id){
+                 return {
+                    ...item, 
+                    
+                   completed: !item.completed
+                 
+                   }
+                } else {
+        
+                  return item
+        
+                }
+        
+                  
+                }))} >{t.task}
+      </p>
+
     )}
   </div>
 
@@ -65,7 +88,7 @@ return (
 
   </form>
     <div> 
-      <button className ="Add" onClick={() => setTasks([...tasks, text])} >Add todo</button>
+      <button className ="Add" onClick={() => setTasks([...tasks, {task: text, id: Date.now(), completed: false}])} >Add todo</button>
       <button className ="clear" onClick={() => console.log(text)} >Clear Completed</button>
     </div>
 </div>
@@ -96,7 +119,7 @@ return (
 //           return {
 //             ...item, 
             
-//             task: !item.task
+//             completed: !item.completed
             
 //           }
 //         } else {
