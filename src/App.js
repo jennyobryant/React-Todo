@@ -43,8 +43,15 @@ import React, {useState, useEffect} from 'react';
 function App(){
 return (
 <div>
-  Hello
+  <h2>Todo List: MVP</h2>
+    <div> 
+      <button className ="Add" on click >Add todo</button>
+      <button className ="clear" on click >Clear Completed</button>
+
+      
+    </div>
 </div>
+
 
 ); 
 }
