@@ -47,9 +47,6 @@ function App(){
 const [text, setText] =useState("");
 const [tasks, setTasks] = useState([]); 
 
-console.log(tasks);
-
-let demoTasks = ["wash a car", "use some lotion"];
 return (
 <div>
   <h2>Todo List: MVP</h2>
@@ -63,18 +60,11 @@ return (
                if (item.id === t.id){
                  return {
                     ...item, 
-                    
                    completed: !item.completed
-                 
-                   }
-                } else {
-        
-                  return item
-        
                 }
-        
-                  
-                }))} >{t.task}
+                } else {
+                  return item
+                }}))} >{t.task}
       </p>
 
     )}
@@ -84,12 +74,16 @@ return (
   <form>
     <label>
       <input type ="text" placeholder ="...todo"
+      value = {text}
       onChange = {(event)=> setText(event.target.value)} />
     </label>
 
   </form>
     <div> 
-      <button className ="Add" onClick={() => setTasks([...tasks, {task: text, id: Date.now(), completed: false}])} >Add todo</button>
+      <button className ="Add" onClick={() => {
+        setText(''); 
+        setTasks([...tasks, {task: text, id: Date.now(), completed: false}])
+      }} >Add todo</button>
       <button className ="clear" onClick={() => setTasks(tasks.filter(item => !item.completed))} >Clear Completed</button>
     </div>
 </div>
@@ -97,6 +91,8 @@ return (
 
 ); 
 }
+
+
 //class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -107,7 +103,8 @@ return (
 //     constructor(){
 //       super()
 //       this.state ={
-//         tasks: data
+//         tasks: [],
+
 //       }
 //     }
 
