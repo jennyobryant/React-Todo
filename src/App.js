@@ -46,9 +46,16 @@ const [text, setText] =useState("");
 const [tasks, setTasks] = useState([]); 
 
 console.log(tasks);
+
+let demoTasks = ["wash a car", "use some lotion"];
 return (
 <div>
   <h2>Todo List: MVP</h2>
+  <div>
+    {tasks.map(t => 
+      <p key={t}>{t}</p>
+    )}
+  </div>
 
   <form>
     <label>
