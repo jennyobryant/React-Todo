@@ -41,19 +41,25 @@ import React, {useState, useEffect} from 'react';
 //   ) 
 
 function App(){
+
+const [text, setText] =useState("");
+const [tasks, setTasks] = useState([]); 
+
+console.log(tasks);
 return (
 <div>
   <h2>Todo List: MVP</h2>
 
   <form>
     <label>
-      <input type ="text" placeholder ="...todo" />
+      <input type ="text" placeholder ="...todo"
+      onChange = {(event)=> setText(event.target.value)} />
     </label>
 
   </form>
     <div> 
-      <button className ="Add" onClick={() => console.log("received")} >Add todo</button>
-      <button className ="clear" onClick={() => console.log("cleared")} >Clear Completed</button>
+      <button className ="Add" onClick={() => setTasks([...tasks, text])} >Add todo</button>
+      <button className ="clear" onClick={() => console.log(text)} >Clear Completed</button>
     </div>
 </div>
 
