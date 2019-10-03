@@ -78,6 +78,7 @@ return (
       </p>
 
     )}
+
   </div>
 
   <form>
@@ -89,7 +90,7 @@ return (
   </form>
     <div> 
       <button className ="Add" onClick={() => setTasks([...tasks, {task: text, id: Date.now(), completed: false}])} >Add todo</button>
-      <button className ="clear" onClick={() => console.log(text)} >Clear Completed</button>
+      <button className ="clear" onClick={() => setTasks(tasks.filter(item => !item.completed))} >Clear Completed</button>
     </div>
 </div>
 
