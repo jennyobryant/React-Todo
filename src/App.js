@@ -44,11 +44,16 @@ function App(){
 return (
 <div>
   <h2>Todo List: MVP</h2>
+  
+  <form>
+    <label>
+      <input type ="text" placeholder ="...todo" />
+    </label>
+
+  </form>
     <div> 
       <button className ="Add" on click >Add todo</button>
       <button className ="clear" on click >Clear Completed</button>
-
-      
     </div>
 </div>
 
